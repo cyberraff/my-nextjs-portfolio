@@ -1,41 +1,17 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import PageTitle from '../components/PageTitle'
-import { getAllArticle } from '../lib/utils'
-
-const url = 'https://dev.to/api/articles/latest?username=cyberraff'
-export default function Home({ movies }) {
-    const [posta, setPosta] = useState({})
-    const [loading, setLoading] = useState(true)
-
-    // setPosta(articles)
-    // setLoading(false)
-    // useEffect(() => {
-    //     getAllArticle()
-    //     setPosta(response.data)
-    //     setLoading(false)
-    // }, [])
-    const title = ` Hello,  I'm Raphael 👋`
-    const subtitle = `A Front-End Developer, content writer, Gamer and  Blogger`
+const title = 'Blog'
+const subtitle = 'My Blog Page '
+const blog = () => {
     return (
-        <Layout title='Home' description={`${title}-${subtitle}`}>
+        <Layout title={title} description={subtitle}>
             <div>
-                <Head>
-                    <title>Cyber-Raff</title>
-                    <meta
-                        name='description'
-                        content="Raphael Ejeogo's Portfolio website"
-                    />
-
-                    <link rel='icon' href='/favicon.ico' />
-                </Head>
-
-                <main>
-                    <div className=''>
-                        <div className='mb-24'>
-                            <div className='bg-hm-bg h-[400px] bg-cover bg-center  text-white  px-4 flex'>
+                <Head></Head>
+                <main className='w-full'>
+                    <div className='w-full'>
+                        <div className='mb-24 w-full '>
+                            <div className='bg-blog-bg h-[400px] bg-cover bg-center  text-white  px-4 flex'>
                                 <div className='container my-auto  items-center'>
                                     <PageTitle
                                         title={title}
@@ -44,9 +20,7 @@ export default function Home({ movies }) {
                                 </div>
                             </div>
                         </div>
-
-                        {/* ABOUT */}
-
+                        {/* BLOG */}
                         <div className=' px-5 py-5'>
                             <div>
                                 <h2 className=' text-4xl py-5'>About</h2>
@@ -84,48 +58,11 @@ export default function Home({ movies }) {
                         </div>
 
                         {/* BLOG */}
-
-                        <div className='px-5 py-5'> BLOG</div>
-                        {/* PORTFOLIO */}
-                        <div className='px-5 py-5'>PORTFOLIO</div>
-
-                        <div className='py-6'>portfolio section</div>
-                        <div></div>
                     </div>
                 </main>
-
-                <footer className='flex-1 py-1 justify-center align-cennter border-t border-t-[#eaeaea'>
-                    <a
-                        className='flex justify-center align-center flex-grow'
-                        href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        Powered by{' '}
-                        <span className=''>
-                            <Image
-                                src='/vercel.svg'
-                                alt='Vercel Logo'
-                                width={72}
-                                height={16}
-                            />
-                        </span>
-                    </a>
-                </footer>
             </div>
         </Layout>
     )
 }
 
-// export async function getStaticProps(context) {
-//     const data = await getAllArticle()
-//     return {
-//         props: { data }, // will be passed to the page component as props
-//     }
-// }
-
-export const getStaticProps = async () => {
-    const movies = await getAllArticle()
-    console.log(movies)
-
-    return { props: { movies } }
-}
+export default blog

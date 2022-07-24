@@ -1,23 +1,24 @@
 /** @type {import('tailwindcss').Config} */
-// module.exports = {
-//   content: [],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// }
-
 module.exports = {
-    purge: [
+    content: [
         './pages/**/*.{js,ts,jsx,tsx}',
         './components/**/*.{js,ts,jsx,tsx}',
     ],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: 'class', // or 'media' or 'class'
+
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                // Josefin: ['Josefin Sans'],
+                aviera: [' Comic Neue'],
+            },
+            backgroundImage: {
+                'hm-bg':
+                    "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/hm-bg.jpeg')",
+                'blog-bg':
+                    "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/blog-bg-sm.jpg')",
+            },
+        },
     },
-    variants: {
-        extend: {},
-    },
-    plugins: [],
+    plugins: [require('daisyui')],
 }
