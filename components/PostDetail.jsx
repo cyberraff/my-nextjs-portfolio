@@ -95,7 +95,7 @@ const PostDetail = ({ post }) => {
                     <Head></Head>
                     <main className='w-full'>
                         <div className='w-full'>
-                            <div className='bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
+                            <div className=' shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
                                 <div className='relative overflow-hidden shadow-md mb-6 h-[480px]'>
                                     <img
                                         src={post.coverImage.url}
