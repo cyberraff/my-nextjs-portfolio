@@ -3,10 +3,8 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import PageTitle from '../components/PageTitle'
-import { getAllArticle } from '../lib/utils'
 
-const url = 'https://dev.to/api/articles/latest?username=cyberraff'
-export default function Home({ movies }) {
+export default function Home() {
     const [posta, setPosta] = useState({})
     const [loading, setLoading] = useState(true)
 
@@ -21,7 +19,7 @@ export default function Home({ movies }) {
     const subtitle = `A Front-End Developer, content writer, Gamer and  Blogger`
     return (
         <Layout title='Home' description={`${title}-${subtitle}`}>
-            <div>
+            <div className='w-full'>
                 <Head>
                     <title>Cyber-Raff</title>
                     <meta
@@ -53,31 +51,16 @@ export default function Home({ movies }) {
 
                                 <div className='text-lg'>
                                     <p className=' leading-loose font-light pb-16 '>
-                                        Raphael Ejeogo (Cyber-Raff) is a
-                                        Self-Taught Web Developer currently
-                                        finishing his Computer Science Degree in
-                                        the University of Port Harcourt
+                                        Raphael Ejeogo (Cyber-Raff) is a Self-Taught Web Developer currently finishing his Computer Science Degree at the University of Port Harcourt
                                     </p>
                                     <p>
-                                        I have been working on web development
-                                        since the beginning of 2019, and I have
-                                        a very good understanding on a variety
-                                        of programming languages and frameworks.
-                                        which includes, Javascript, ReactJS,
-                                        HTML/CSS, Bootstrap, Tailwind CSS,
-                                        Sass/Scss currently i am working my way
-                                        to becoming a full stack developer.
+                                        I have been working on web development since the beginning of 2019, and I have a very good understanding of a variety of programming languages and frameworks. which includes, Javascript, ReactJS, HTML/CSS, Bootstrap, Tailwind CSS, and Sass/Scss currently I am working my way to becoming a full stack developer.
                                     </p>
                                     <br />
 
                                     <p>
-                                        I am also a student of the university of
-                                        Port Harcourt , where i am studying to
-                                        get my Bachelors Degree in computer
-                                        Science, <br />I have also finished
-                                        couple of online programs on coding and
-                                        programming, (Web Development to be
-                                        precise)
+                                        I am also a student at the University of Port Harcourt, where I am studying to get my bachelor&apos;s Degree in Computer Science,<br />
+                                        I have also finished a couple of online programs on coding and programming, (Web Development to be precise)
                                     </p>
                                 </div>
                             </div>
@@ -85,11 +68,10 @@ export default function Home({ movies }) {
 
                         {/* BLOG */}
 
-                        <div className='px-5 py-5'> BLOG</div>
+                        <div className='px-5 py-5'> FEATURED POST SECTION (coming soon)</div>
                         {/* PORTFOLIO */}
-                        <div className='px-5 py-5'>PORTFOLIO</div>
+                        <div className='px-5 py-5'> FEATURED PROJECT SECTION (coming soon)</div>
 
-                        <div className='py-6'>portfolio section</div>
                         <div></div>
                     </div>
                 </main>
@@ -124,8 +106,5 @@ export default function Home({ movies }) {
 // }
 
 export const getStaticProps = async () => {
-    const movies = await getAllArticle()
-    console.log(movies)
-
-    return { props: { movies } }
+    return { props: {} }
 }

@@ -1,20 +1,23 @@
+import Image from 'next/image'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import PageTitle from '../components/PageTitle'
+import { getProjects } from '../services/index'
+import { grpahCMSImageLoader } from '../lib/utils'
+import { postcss } from 'daisyui/src/lib/postcss-prefixer'
 
-const portfolio = () => {
+const portfolio = ({ projects }) => {
     const title = 'Projects 👨‍💻'
-    const subtitle =
-        'sub jkdsf  fdkjvghsd sikjfh jksdf 8f sfiy iufgy erktjr  irt '
+    const subtitle = 'Some of the projects i have worked on in the past.'
     return (
         <Layout title={title} description={subtitle}>
-            <div>
+            <div className='w-full'>
                 <Head></Head>
                 <main className='w-full'>
                     <div className='w-full'>
                         <div className='mb-24 w-full '>
-                            <div className='bg-blog-bg h-[400px] bg-cover bg-center  text-white  px-4 flex'>
-                                <div className='container my-auto  items-center'>
+                            <div className='bg-blog-bg h-[400px]  bg-cover bg-center  text-white  px-4 flex'>
+                                <div className='container my-auto   items-center'>
                                     <PageTitle
                                         title={title}
                                         subtitle={subtitle}
@@ -25,36 +28,62 @@ const portfolio = () => {
                         {/* BLOG */}
                         <div className=' px-5 py-5'>
                             <div>
-                                <h2 className=' text-4xl py-5'>About</h2>
+                                <h2 className=' text-4xl py-5'>Projects</h2>
 
                                 <div className='text-lg'>
                                     <p className=' leading-loose font-light pb-16 '>
-                                        Raphael Ejeogo (Cyber-Raff) is a
-                                        Self-Taught Web Developer currently
-                                        finishing his Computer Science Degree in
-                                        the University of Port Harcourt
+                                        Here is a list of some of the projects i
+                                        have worked on in the past.
                                     </p>
-                                    <p>
-                                        I have been working on web development
-                                        since the beginning of 2019, and I have
-                                        a very good understanding on a variety
-                                        of programming languages and frameworks.
-                                        which includes, Javascript, ReactJS,
-                                        HTML/CSS, Bootstrap, Tailwind CSS,
-                                        Sass/Scss currently i am working my way
-                                        to becoming a full stack developer.
-                                    </p>
-                                    <br />
+                                </div>
+                                <div className=' '>
+                                    {projects.map((project) => {
 
-                                    <p>
-                                        I am also a student of the university of
-                                        Port Harcourt , where i am studying to
-                                        get my Bachelors Degree in computer
-                                        Science, <br />I have also finished
-                                        couple of online programs on coding and
-                                        programming, (Web Development to be
-                                        precise)
-                                    </p>
+                                        return (
+                                            <div key={project.id} className='flex  pb-14'>
+
+
+                                                <div className='w-3/5'>
+                                                    <h4 className='text-3xl pb-4 font-normal'> {project.name}</h4>
+                                                    <p className='font-normal'>{project.description}</p>
+
+                                                    <div className='pt-5 '>
+                                                        <a
+                                                            className='btn btn-ghost mr-2'
+                                                            href={project.sourceCode}
+                                                            target='_blank'
+                                                            rel='noopener noreferrer nofollow'>
+                                                            Source Codes
+                                                        </a>
+                                                        <a
+                                                            className='btn btn-ghost '
+                                                            href={project.demo}
+                                                            target='_blank'
+                                                            rel='noopener noreferrer nofollow'>
+                                                            Live Site
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                                <div className="ml-12  ">
+                                                    <Image
+                                                        unoptimized
+                                                        loader={grpahCMSImageLoader}
+                                                        alt={project.image}
+                                                        height='200'
+                                                        width='200'
+                                                        src={project.image.url}
+                                                    />
+                                                    {/* <img
+                                                        className='h-48 w-52'
+                                                        src={project.image.url}
+                                                        alt='project image'
+                                                    /> */}
+                                                </div>
+                                            </div>
+
+                                        )
+                                    })}
                                 </div>
                             </div>
                         </div>
@@ -68,3 +97,11 @@ const portfolio = () => {
 }
 
 export default portfolio
+
+// Fetch data at build time
+export async function getStaticProps() {
+    const projects = await getProjects()
+    return {
+        props: { projects },
+    }
+}

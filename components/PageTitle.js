@@ -4,7 +4,7 @@ import { SiHashnode } from 'react-icons/si'
 const socials = [
     {
         icon: FaDev,
-        url: 'dev.to',
+        url: 'https://dev.to/cyberraff',
     },
     {
         icon: SiHashnode,

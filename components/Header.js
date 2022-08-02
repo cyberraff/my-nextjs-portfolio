@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header
             className='w-full flex flex-row justify-between
-        
+        fixed bg-white
             
             items-center sm:text-2xl text-xl
         h-16 md:h-20 border-b border-gray-200 z-50
