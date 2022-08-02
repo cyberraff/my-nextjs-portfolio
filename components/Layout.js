@@ -17,7 +17,7 @@ export default function Layout({ children, title, description }) {
                 variants={variants}
                 transition={{ type: 'linear' }}
                 className='
-                    flex flex-col items-start w-full pt-10
+                    flex flex-col items-start w-full 
                     px-8 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96
                     pt-24 h-full
                 '>
