@@ -111,11 +111,11 @@ const PostDetail = ({ post }) => {
                                                 className='align-middle rounded-full h-[30px] w-[30px]'
                                                 src={post.author.picture.url}
                                             />
-                                            <p className='inline align-middle text-gray-700 ml-2 font-medium text-lg'>
+                                            <p className='inline align-middle text-gray-900 ml-2  dark:text-gray-50  font-medium text-lg'>
                                                 {post.author.name}
                                             </p>
                                         </div>
-                                        <div className='font-medium text-gray-700'>
+                                        <div className='font-medium text-gray-900  dark:text-gray-50 '>
                                             <svg
                                                 xmlns='http://www.w3.org/2000/svg'
                                                 className='h-6 w-6 inline mr-2 text-pink-500'
