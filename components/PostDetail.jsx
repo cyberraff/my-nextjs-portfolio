@@ -43,7 +43,7 @@ const PostDetail = ({ post }) => {
                 return (
                     <pre
                         key={index}
-                        className='mb-8 text-sm  m-4 bg-gray-200 p-4'>
+                        className='mb-8 text-sm  m-4 bg-gray-200 dark:bg-gray-700 p-4'>
                         {modifiedText.map((item, i) => (
                             <React.Fragment key={i}>{item}</React.Fragment>
                         ))}
