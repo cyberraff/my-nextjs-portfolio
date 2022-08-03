@@ -31,7 +31,7 @@ export const getProjects = async () => {
 export const getPosts = async () => {
     const query = gql`
    query MyQuery {
-  postsConnection {
+  postsConnection(orderBy: publishedAt_DESC) {
     edges {
       cursor
       node {
