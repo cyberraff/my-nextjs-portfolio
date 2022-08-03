@@ -11,7 +11,15 @@ const blog = ({ posts }) => {
     return (
         <Layout title={title} description={subtitle}>
             <div className='w-full'>
-                <Head></Head>
+                <Head>
+                    <title>Blog | Cyber-Raff</title>
+                    <meta
+                        name='description'
+                        content="Raphael Ejeogo's Blog page"
+                    />
+
+                    <link rel='icon' href='/favicon.ico' />
+                </Head>
                 <main className='w-full'>
                     <div className='w-full'>
                         <div className='mb-24 w-full '>

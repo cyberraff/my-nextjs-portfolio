@@ -12,7 +12,15 @@ const portfolio = ({ projects }) => {
     return (
         <Layout title={title} description={subtitle}>
             <div className='w-full'>
-                <Head></Head>
+                <Head>
+                    <title>Portfolio | Cyber-Raff</title>
+                    <meta
+                        name='description'
+                        content="Raphael Ejeogo's Portfolio page"
+                    />
+
+                    <link rel='icon' href='/favicon.ico' />
+                </Head>
                 <main className='w-full'>
                     <div className='w-full'>
                         <div className='mb-24 w-full '>
@@ -40,10 +48,18 @@ const portfolio = ({ projects }) => {
                                     {projects.map((project) => {
 
                                         return (
-                                            <div key={project.id} className='flex  pb-14'>
-
-
-                                                <div className='w-3/5'>
+                                            <div key={project.id} className='sm:flex pb-14'>
+                                                <div className=" ">
+                                                    <Image
+                                                        unoptimized
+                                                        loader={grpahCMSImageLoader}
+                                                        alt={project.image}
+                                                        height='200'
+                                                        width='200'
+                                                        src={project.image.url}
+                                                    />
+                                                </div>
+                                                <div className='w-3/5 sm:ml-6 mt-6 sm:mt-0'>
                                                     <h4 className='text-3xl pb-4 font-normal'> {project.name}</h4>
                                                     <p className='font-normal'>{project.description}</p>
 
@@ -65,7 +81,7 @@ const portfolio = ({ projects }) => {
                                                     </div>
 
                                                 </div>
-                                                <div className="ml-12  ">
+                                                {/* <div className="ml-12  ">
                                                     <Image
                                                         unoptimized
                                                         loader={grpahCMSImageLoader}
@@ -73,13 +89,13 @@ const portfolio = ({ projects }) => {
                                                         height='200'
                                                         width='200'
                                                         src={project.image.url}
-                                                    />
-                                                    {/* <img
+                                                    /> */}
+                                                {/* <img
                                                         className='h-48 w-52'
                                                         src={project.image.url}
                                                         alt='project image'
                                                     /> */}
-                                                </div>
+
                                             </div>
 
                                         )
@@ -103,5 +119,6 @@ export async function getStaticProps() {
     const projects = await getProjects()
     return {
         props: { projects },
+        revalidate: 86400 // In one day
     }
 }

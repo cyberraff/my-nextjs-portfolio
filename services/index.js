@@ -93,3 +93,4 @@ export const getPostDetails = async (slug) => {
 
     return result.post;
 };
+

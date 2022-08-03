@@ -2,11 +2,13 @@ import React from 'react'
 import Layout from './Layout'
 import moment from 'moment'
 import Head from 'next/head'
+import Link from 'next/link'
 const title = 'Post Detail'
 const subtitle = 'My Blog Page Post Detail'
 const PostDetail = ({ post }) => {
-    const getContentFragment = (index, text, obj, type) => {
+    const getContentFragment = (index, text, obj, type, title) => {
         let modifiedText = text
+        let modifiedTitle = title
 
         if (obj) {
             if (obj.bold) {
@@ -20,6 +22,9 @@ const PostDetail = ({ post }) => {
             if (obj.underline) {
                 modifiedText = <u key={index}>{text}</u>
             }
+            if (obj.code) {
+                modifiedText = <li key={index}>{text}</li>
+            }
         }
 
         switch (type) {
@@ -31,6 +36,14 @@ const PostDetail = ({ post }) => {
                         ))}
                     </h3>
                 )
+            case 'link':
+                return (
+                    <p key={index} className='mb-8 text-lg'>
+                        {modifiedText.map((item, i) => (
+                            <React.Fragment key={i}>{item}</React.Fragment>
+                        ))}
+                    </p>
+                )
             case 'paragraph':
                 return (
                     <p key={index} className='mb-8 text-lg'>
@@ -39,6 +52,23 @@ const PostDetail = ({ post }) => {
                         ))}
                     </p>
                 )
+
+            // case 'text':
+            //     return (
+            //         <ul key={index} className='mb-8 text-lg'>
+            //             {modifiedText.map((item, i) => (
+            //                 <React.Fragment key={i}>{item}</React.Fragment>
+            //             ))}
+            //         </ul>
+            //     )
+            // case 'text':
+            //     return (
+            //         <li key={index} className='mb-8 text-lg'>
+            //             {modifiedText.map((item, i) => (
+            //                 <React.Fragment key={i}>{item}</React.Fragment>
+            //             ))}
+            //         </li>
+            //     )
             case 'code-block':
                 return (
                     <pre
@@ -92,7 +122,14 @@ const PostDetail = ({ post }) => {
         <>
             <Layout title={title} description={subtitle}>
                 <div className='w-full'>
-                    <Head></Head>
+                    <Head>
+                        <title>
+                            {post.title} , {post.excerpt}
+                        </title>
+                        <meta name='description' content='  {post.excerpt}' />
+
+                        <link rel='icon' href='/favicon.ico' />
+                    </Head>
                     <main className='w-full'>
                         <div className='w-full'>
                             <div className=' shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
@@ -157,6 +194,7 @@ const PostDetail = ({ post }) => {
                                                     children,
                                                     typeObj,
                                                     typeObj.type,
+                                                    typeObj.title,
                                                 )
                                             },
                                         )}
