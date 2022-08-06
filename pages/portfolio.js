@@ -23,9 +23,9 @@ const portfolio = ({ projects }) => {
                 </Head>
                 <main className='w-full'>
                     <div className='w-full'>
-                        <div className='mb-24 w-full '>
+                        <div className='w-full mb-24 '>
                             <div className='bg-blog-bg h-[400px]  bg-cover bg-center  text-white  px-4 flex'>
-                                <div className='container my-auto   items-center'>
+                                <div className='container items-center my-auto'>
                                     <PageTitle
                                         title={title}
                                         subtitle={subtitle}
@@ -34,22 +34,22 @@ const portfolio = ({ projects }) => {
                             </div>
                         </div>
                         {/* BLOG */}
-                        <div className=' px-5 py-5'>
+                        <div className='px-5 py-5 '>
                             <div>
-                                <h2 className=' text-4xl py-5'>Projects</h2>
+                                <h2 className='py-5 text-4xl '>Projects</h2>
 
                                 <div className='text-lg'>
-                                    <p className=' leading-loose font-light pb-16 '>
+                                    <p className='pb-16 font-light leading-loose '>
                                         Here is a list of some of the projects i
                                         have worked on in the past.
                                     </p>
                                 </div>
-                                <div className=' '>
+                                <div className=''>
                                     {projects.map((project) => {
 
                                         return (
                                             <div key={project.id} className='sm:flex pb-14'>
-                                                <div className=" ">
+                                                <div className="">
                                                     <Image
                                                         unoptimized
                                                         loader={grpahCMSImageLoader}
@@ -59,13 +59,13 @@ const portfolio = ({ projects }) => {
                                                         src={project.image.url}
                                                     />
                                                 </div>
-                                                <div className='w-3/5 sm:ml-6 mt-6 sm:mt-0'>
-                                                    <h4 className='text-3xl pb-4 font-normal'> {project.name}</h4>
+                                                <div className='w-3/5 mt-6 sm:ml-6 sm:mt-0'>
+                                                    <h4 className='pb-4 text-3xl font-normal'> {project.name}</h4>
                                                     <p className='font-normal'>{project.description}</p>
 
                                                     <div className='pt-5 '>
                                                         <a
-                                                            className='btn btn-ghost mr-2'
+                                                            className='mr-2 btn btn-ghost'
                                                             href={project.sourceCode}
                                                             target='_blank'
                                                             rel='noopener noreferrer nofollow'>
@@ -81,7 +81,7 @@ const portfolio = ({ projects }) => {
                                                     </div>
 
                                                 </div>
-                                                {/* <div className="ml-12  ">
+                                                {/* <div className="ml-12 ">
                                                     <Image
                                                         unoptimized
                                                         loader={grpahCMSImageLoader}
@@ -119,6 +119,6 @@ export async function getStaticProps() {
     const projects = await getProjects()
     return {
         props: { projects },
-        revalidate: 43200 // In 12 hrs
+        revalidate: 43200 // In 12 hrs.
     }
 }
