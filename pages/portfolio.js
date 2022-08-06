@@ -119,6 +119,6 @@ export async function getStaticProps() {
     const projects = await getProjects()
     return {
         props: { projects },
-        revalidate: 86400 // In one day
+        revalidate: 43200 // In 12 hrs
     }
 }
